@@ -15,7 +15,6 @@ export default function App() {
       setProductos(response);
     }
     fetchProductos();
-    console.log(productos.data.length);
   }, []);
 
   return (
@@ -25,9 +24,17 @@ export default function App() {
       <ScrollView>
         {productos.data &&
           productos.data.map((producto) => (
-            <Text key={producto.id}>
-              {producto.id} - {producto.nombre} - ${producto.precio_promedio}
-            </Text>
+            <>
+              <Image
+                source={{
+                  uri: `https://picsum.photos/200/300?random=${producto.id}`,
+                }}
+                style={{ width: 50, height: 50, borderRadius: 10 }}
+              />
+              <Text key={producto.id}>
+                {producto.id} - {producto.nombre} - ${producto.precio_promedio}
+              </Text>
+            </>
           ))}
       </ScrollView>
       <StatusBar style="auto" />
