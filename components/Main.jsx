@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   ActivityIndicator,
+  FlatList,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -41,12 +42,17 @@ export function Main() {
       {ActivityIndicator && productos.length === 0 && (
         <ActivityIndicator size="large" color="#0000ff" />
       )}
-      <ScrollView>
+      <FlatList
+        data={productos.data}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <ProductCard producto={item} />}
+      />
+      {/* <ScrollView>
         {productos.data &&
           productos.data.map((producto) => (
             <ProductCard key={producto.id} producto={producto} />
           ))}
-      </ScrollView>
+      </ScrollView> */}
       <StatusBar style="auto" />
     </View>
   );

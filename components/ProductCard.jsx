@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     color: "#777",
-    marginBottom: 10,
+    marginBottom: 25,
   },
 });
