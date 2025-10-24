@@ -1,5 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useEffect, useState } from "react";
@@ -31,6 +38,9 @@ export function Main() {
     >
       <Image source={icon} style={{ width: 128, height: 128 }} />
       <Text>Productos disponibles:</Text>
+      {ActivityIndicator && productos.length === 0 && (
+        <ActivityIndicator size="large" color="#0000ff" />
+      )}
       <ScrollView>
         {productos.data &&
           productos.data.map((producto) => (
