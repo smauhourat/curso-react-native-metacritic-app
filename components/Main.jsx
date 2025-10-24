@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useEffect, useState } from "react";
 import { getProducts } from "../lib/api";
@@ -8,6 +9,7 @@ import icon from "../assets/icon.png";
 
 export function Main() {
   const [productos, setProductos] = useState([]);
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     async function fetchProductos() {
@@ -18,7 +20,14 @@ export function Main() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        paddingTop: insets.top,
+        flex: 1,
+        alignItems: "center",
+        paddingBottom: insets.bottom,
+      }}
+    >
       <Image source={icon} style={{ width: 128, height: 128 }} />
       <Text>Productos disponibles:</Text>
       <ScrollView>
