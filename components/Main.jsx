@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getProducts } from "../lib/api";
 
 import icon from "../assets/icon.png";
+import { ProductCard } from "./ProductCard";
 
 export function Main() {
   const [productos, setProductos] = useState([]);
@@ -33,17 +34,7 @@ export function Main() {
       <ScrollView>
         {productos.data &&
           productos.data.map((producto) => (
-            <>
-              <Image
-                source={{
-                  uri: `https://picsum.photos/200/300?random=${producto.id}`,
-                }}
-                style={{ width: 50, height: 50, borderRadius: 10 }}
-              />
-              <Text key={producto.id}>
-                {producto.id} - {producto.nombre} - ${producto.precio_promedio}
-              </Text>
-            </>
+            <ProductCard key={producto.id} producto={producto} />
           ))}
       </ScrollView>
       <StatusBar style="auto" />
