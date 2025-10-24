@@ -8,7 +8,7 @@ import { Logo } from "./components/Logo";
 export default function App() {
   return (
     <SafeAreaProvider>
-      <Logo />
+      {/* <Logo /> */}
       <View style={styles.container}>
         <StatusBar style="auto" />
         <Main />
